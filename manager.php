@@ -1,7 +1,9 @@
 <?php
 // error_reporting(0); เอาไว้ปิดeror
 ob_start();
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 try 
 {
     $db = new PDO("mysql:host=localhost;dbname=blog;charset=utf8;", "root", ""); //ต่อฐานข้อมูล
