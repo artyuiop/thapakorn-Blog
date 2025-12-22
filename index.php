@@ -17,5 +17,8 @@
     <p>นายประสิทธิ์  สะภา (ไมค์)</p>
     <p>Pasit sapa (Mike)</p>
     <hr>
+    <p>นางสาวปภาวรินทร์ บุญเกรียว (ปิ่น)</p>
+    <p>Paphawarin Bunkiao (Pin)</p>
+    <hr>
 </body>
 </html>

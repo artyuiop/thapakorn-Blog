@@ -1,5 +1,6 @@
 # Lab PHP Admin Blog
 
-Thapakorn khambo(ARTY)
-Eakmon Tingtoon (EAK)
-Pasit sapa  (Mike)
+Thapakorn (ARTY)
+Eakmon (EAK)
+Pasit (Mike)
+Paphawarin (Pin)
