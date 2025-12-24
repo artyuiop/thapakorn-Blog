@@ -1,26 +1,32 @@
-<?php
+
+<?php 
     session_start(); 
     include_once './config/db.php';
     include_once './class/auth.php';
+
 
     $database = new Database();
     $db = $database->getDB();
 
     $user = new auth($db);
 
-    if (isset($_POST['signin'])) {
+    if(isset($_POST['signup'])) {
+        $user->fname = $_POST['fname'];
+        $user->lname = $_POST['lname'];
         $user->username = $_POST['username'];
         $user->password = $_POST['password'];
 
-        if ($user->login()) {
-            header("Location: ./view/blog.php");
-            exit();
-        } else {
-            echo "ไม่พบชื่อผู้ใช้งาน หรือ รหัสผ่านไม่ถูกต้อง ทำดิสัส";
+        if($user->checkUsername()) {
+            die("ซํ้าไอ้สัส");
         }
-    }
-?>
 
+        if($user->register()) {
+            echo "<script>alert('ได้ละควย');</script>";
+        }      
+    }
+
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,13 +38,20 @@
 <body>
 <main class="flex-grow-1">
     <div class="mt-5">
-
         <div class="text-center pt-5">
-            <h1>Login Form</h1>
+            <h1>Registr Form</h1>
         </div>
 
         <div class="col-md-4 offset-md-4 mt-5">
             <form method="POST">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">fname</label>
+                    <input type="text" class="form-control" name="fname">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">lname</label>
+                    <input type="text" class="form-control" name="lname">
+                </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">username</label>
                     <input type="text" class="form-control" name="username">
@@ -46,10 +59,10 @@
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
                     <input type="password" class="form-control" name="password">
-                    <p>ไม่มีมีบัญชีผู้ใช้?<a href="signup.php">สมัครสมาชิก</a></p>
+                    <p>มีบัญชีผู้ใช้อยู่แล้ว?<a href="index.php">ล็อกอิน</a></p>
                 </div>
                 <div class="text-center mt-5">
-                    <button type="submit" class="btn btn-primary w-50 center" name="signin">Submit</button>
+                    <button type="submit" class="btn btn-primary w-50 center" name="signup">Submit</button>
                 </div>
             </form>
 
@@ -64,4 +77,3 @@
 
 </body>
 </html>
-
