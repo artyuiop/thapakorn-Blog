@@ -64,7 +64,7 @@ class auth {
     public function logout() {
         session_start();
         unset($_SESSION['userid']);
-        header("location: ../index.php");
+        header("location: ./index.php");
         exit;
     }
 
